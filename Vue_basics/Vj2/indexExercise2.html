@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="exercise">
+      <!-- 1) Show an alert when the Button gets clicked -->
+      <div>
+        <button v-on:click="alertCall">Show Alert</button>
+      </div>
+      <!-- 2) Listen to the "keydown" event and store the value in a data property (hint: event.target.value gives you the value) -->
+      <div>
+        <input v-on:keydown="storeValue" type="text" />
+        <!-- Alternative call with possibility for extra parameters-->
+        <input v-on:keydown="storeValue($event)" type="text" />
+        <p>{{ value }}</p>
+      </div>
+      <!-- 3) Adjust the example from 2) to only fire if the "key down" is the ENTER key -->
+      <div>
+        <input v-on:keydown.enter="storeValue" type="text" />
+        <p>{{ value }}</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  new Vue({
+    el: "#exercise",
+    data: {
+      value: 0
+    },
+    methods: {
+      alertCall: function() {
+        alert("Alert");
+      },
+      storeValue: function(event) {
+        this.value = event.target.value;
+      }
+    }
+  });
+</script>

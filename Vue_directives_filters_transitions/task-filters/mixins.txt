@@ -1,0 +1,17 @@
+Mixin je obicni js file koji drzi neke shareane funkcije ili podatke.
+
+export const fruitMixin = {}
+
+I importamo ga u file gdje ga koristimo. Importamo samo onaj dio koji zelimo koristit {}.
+import { fruitMixin } from "./fruitMixin";
+
+mixins: [fruitMixin].
+
+Mozemo imati vise istih podatkovnih vrsta, recimo data(), filter, component u oba fila, Vue ce se pobrinit za merge.
+
+Globalni mixin se koristi na svim komponentama aplikacije. Nema velike koristi za to.
+
+Mixin je lokalnog scopea, odnosno, taj dio koda se dodaje u svaki file pojedinacno.
+Ako napravimo promjenu, ona se dogada samo unutar tog poziva. Dakle nije shared.
+
+Ako zelimo shared objekt, onda ili event bus ili obicni js file i importat ga bez mixina.

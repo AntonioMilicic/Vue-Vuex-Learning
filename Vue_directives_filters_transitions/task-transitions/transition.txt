@@ -1,0 +1,7 @@
+Koristimo <transition> tag unutar kojeg stavljamo 1 element nad kojim se izvrsava.
+v-if i v-show koriste se generalno da bi se izvrsila tranzicija.
+Vue dodaje css klasu, koju mi nazivamo i onda Vue dodaje -enter klasu, samo dok traje animacija prvog Framea.
+Nakon toga se dodaje -enter-active, koju Vue odreduje ovisno koliko smo mi stavili u css-u.
+Za uklanjanje koristi -leave i -leave-active.
+Ako ne damo ime koristi se v-enter klasa defaultno.
+Imena mi dodajemo koristeci name="fade" atribut, gdje hardcodiramo ime. Moze se koristiti i :name, al onda prosljedi dinamicko ime.

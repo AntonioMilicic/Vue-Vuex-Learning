@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <button v-on:click="increase" type="button">Click me!</button>
+      <button v-on:click="increase(2, $event)" type="button">
+        Click me +2!
+      </button>
+      <p>{{ counter }}</p>
+      <p v-on:mousemove="updateCoordinates">
+        Coordinates: {{ x }} / {{ y }}
+        <span v-on:mousemove="dummy">-Dead Spot</span>
+        <span v-on:mousemove.stop="">-Dead Spot2</span>
+      </p>
+      <input type="text" v-on:keyup.enter.space="alertMe" />
+    </div>
+  </body>
+</html>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      counter: 0,
+      x: 0,
+      y: 0
+    },
+    methods: {
+      increase: function(steps, event) {
+        if (steps == 2) {
+          this.counter += 2;
+        } else {
+          this.counter++;
+        }
+      },
+      updateCoordinates: function(event) {
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+      dummy: function() {
+        event.stopPropagation();
+      },
+      alertMe: function() {
+        alert("Alert!");
+      }
+    }
+  });
+</script>

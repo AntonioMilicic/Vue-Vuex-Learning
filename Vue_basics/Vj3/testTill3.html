@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <button v-on:click="counter++" type="button">Click me!</button>
+      <p>Counter: {{ counter }}</p>
+      <p>
+        Result1:{{ counter * 2 > 10 ? 'Greater than 10/2' : 'Smaller than 10/2'
+        }}
+      </p>
+      <button v-on:click="increase" type="button">Click me!</button>
+      <p>Result2: {{ result }}</p>
+    </div>
+  </body>
+</html>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: { counter: 0, result: 0 },
+    methods: {
+      increase: function() {
+        this.counter++;
+        this.result = this.counter > 5 ? "Greater 5" : "Smaller 5";
+      }
+    }
+  });
+</script>

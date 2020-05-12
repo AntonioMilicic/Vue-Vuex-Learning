@@ -1,0 +1,7 @@
+Moguce je napraviti i traniziciju izmedu vise elemenata. Tada ih stavljamo u istu tranziciju,
+ali dodajemo key="razlicito", tako da bi Vue znao da se radi o razlicim elementima.
+Kako bi animacija izgledala prirodno, ne bi skocio element doli, jer se jos nije izbrisao stari iz DOM-a,
+koristimo mode="in-out" ili "out-in".
+U tranziciju vise elemenata v-show ne radi, moramo v-if/else.
+
+${firstNumber} za ubacivanje dinamicke varijable u string.

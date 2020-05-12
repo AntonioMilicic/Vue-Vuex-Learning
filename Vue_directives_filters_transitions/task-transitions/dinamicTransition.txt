@@ -1,0 +1,8 @@
+Za dinamicke komponente <component> na isti nacin se koristi, samo stavit tranziciju iznad.
+
+Ako se radi o listama onda se koristi <transition-group>.
+Razlika izmedu njih je sto se tranzicija ne rendera u DOM-u kao element, dok transition-group da,
+kao span, al se moze overwrite-at sa tag="nekiTag".
+
+Samo stavimo tag iznad elemenata liste.
+Koristimo -move class addon za pomicanje elemenata, to ne postoji u obicnom transition.

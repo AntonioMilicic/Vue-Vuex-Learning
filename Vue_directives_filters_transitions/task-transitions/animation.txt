@@ -1,0 +1,13 @@
+Moguce je zamisati tranziciju i animaciju.
+Animacija i tranzicija moraju zavrsavati u podjednako vrime.
+Vue moze to odrediti tako sto se postavi type i onda se uzme vrime animacije koje zelimo koristiti,
+ako su razlicita.
+Moze se dodati inicijalna animacija, cim se ulazi u stranicu dodavanjem atributa appear na <transition>.
+
+enter-class
+enter-active-class="animated bounce"
+leave-class
+leave-active-class="animated shake"
+To su klase-atributi koje dodajemo u tranziciju kada zelimo koristiti drugacije ime od defaultnog, recimo za onu stranicu s animacijama.
+
+Moguce je i dinamicki namistit, al pazit da je i type onda dinamicki, da ih ne zezne.

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1 v-once>{{ title }}</h1>
+      <input type="text" v-on:input="changeTitle" />
+      <p>{{ title }}</p>
+      <p v-once>{{ saySomething() }} - <a v-bind:href="link">Google</a></p>
+      <p v-html="finishedLink"></p>
+    </div>
+  </body>
+</html>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      title: "Helloooo",
+      link: "https://google.com",
+      finishedLink: '<a href="https://google.com">Googleeee</a>'
+    },
+    methods: {
+      changeTitle: function(event) {
+        this.title = event.target.value;
+      },
+      saySomething: function() {
+        this.title = "hello!";
+        return this.title;
+      }
+    }
+  });
+</script>

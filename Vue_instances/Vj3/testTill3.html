@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <button type="button" ref="myButton" @click="show">Reveal</button>
+      <p v-if="showParagraph">Some text</p>
+    </div>
+    <div id="app2">
+      <h1>{{ title }}</h1>
+      <button type="button" @click="onChange">ChangeIn1</button>
+    </div>
+    <div id="app3"></div>
+  </body>
+</html>
+
+<script>
+  const data = {
+    title: "VueJS instance 1",
+    showParagraph: false
+  };
+
+  Vue.component("hello", {
+    template: "<h1>Hello component</h1>"
+  });
+
+  let vm1 = new Vue({
+    el: "#app",
+    data: data,
+    methods: {
+      show: function() {
+        this.showParagraph = !this.showParagraph;
+        this.$refs.myButton.innerText = "Test";
+      }
+    }
+  });
+
+  setTimeout(function() {
+    vm1.title = "Changed by Timer";
+  }, 3000);
+
+  // dodaje se prop, ali se ne proxy-a
+  vm1.newProp = "new property";
+  console.log(vm1);
+
+  let vm2 = new Vue({
+    el: "#app2",
+    data: {
+      title: "VueJS instance 2"
+    },
+    methods: {
+      onChange: function() {
+        vm1.title = "Changed";
+      }
+    }
+  });
+
+  let vm3 = new Vue({
+    template: "<h1>Hello!</h1>"
+  });
+  // moze se mountat umjesto da se stavlja element pomocu vm1.$mount("#app");
+  // vm3.$mount("#app3");
+
+  // drugi nacin je da se mounta prazno, pa posli referencira gdje postaviti.
+  vm3.$mount();
+  document.getElementById("app3").appendChild(vm3.$el);
+</script>

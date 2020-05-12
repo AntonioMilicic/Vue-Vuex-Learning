@@ -1,0 +1,33 @@
+v-text="'text'" - ispis texta u zeljeno polje.
+v-html="'<neki html>'" - input html koda, pazit na sigurnost.
+
+Vlastite direktive mozemo kreirati globalno(main.js) ili lokalno.
+Globalno:
+Vue.directive('highlight', {bind(el, binding, vnode)});
+Gdje je highlight ime direktive, v-highlight, a u zagrada opisujemo ponasanje.
+
+Lokalno:
+directives: {
+imeDirektive: ili "ime-direktive": {bind...}
+}, definiramo direktive u export default dijelu.
+
+Vue hooks:
+el - na koji element
+binding - koje argumente prima, vrijednost, modifiere.( read only )
+vnode - node u virtualnom DOM. ( read only )
+
+bind(el, binding, vnode) - kada direktiva zahvati element
+inserted( -||- ) - kada se inserta u parent node
+update(el, binding, vnode, oldVnode) - kada se komponenta updatea, bez childa.
+componentUpdated( -||- ) - isto samo s childom.
+unbind(el, binding, vnode) - kada se direktiva ukloni.
+
+binding.value - vrijednost koju prosljedimo u ="" nakon direktive
+
+binding.arg - dobije se vrijednost koja dolazi nakon : u direktivi.
+v-highlight:background="" - dobije se vrijednost background, ako postoji,
+s tim se mogu koristiti if else uvijeti za odredeno ponasanje.
+
+binding.modifiers[] - dobije se array modifiera.
+v-highlight:background.delay - salje se modifier delay, koji nista ne radi prvotno,
+ali se moze upravljati njime u direktivi da odradi nesto ako ima tu vrijednost.

@@ -1,0 +1,17 @@
+#app .demo {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  background-color: gray;
+  margin: 10px;
+}
+
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}

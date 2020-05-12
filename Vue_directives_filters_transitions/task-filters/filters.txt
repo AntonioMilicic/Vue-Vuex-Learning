@@ -1,0 +1,28 @@
+Filter ne mjenja podatak kao podatak, vec nacin na koji ga pokazuje korisniku.
+Filteri nisu built in u Vue, vec ih sami kreiramo.
+Mogu biti globalno ili lokalno definirani.
+Filter je funkcija koja uvijek prima neku vrijednost.
+
+<p>{{ text | toUpper }}</p>
+| je pipe koji propusti vrijednost filteru i vrati ju promjenjenu.
+(Lokalno)
+filters: {
+    toUpper(value) {
+      return value.toUpperCase();
+    }
+  }
+(Globalno)
+Vue.filter("to-lower", function(value) {
+  return value.toLowerCase();
+});
+
+Moguce ih je nizati, samo se doda | i novi filter.
+
+Za neke stvari bolje je ne radit filter na svakoj promjeni, zato se koristi computed,
+gdje napravimo svoju vrstu filtera, koja se pokrene samo jednom.
+ filteredFruits() {
+      return this.fruits.filter(element => {
+        return element.match(this.filterText);
+      });
+    }
+Onda umjesto v-for="fruit in fruits" koristimo "fruit in filteredFruits"

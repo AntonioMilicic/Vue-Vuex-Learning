@@ -1,0 +1,17 @@
+Transition JS Hooks.
+@before-enter="pozivFunkcije", enter, after-enter, after-enter-cancelled.
+before-leave, leave, after-leave, after-leave-cancelled.
+
+Moze se napraviti sve tranzicije i animacije pomocu JS-a. Al moze se i zamisat.
+
+JS animacije:
+Atributi se sami dohvacaju.
+el - element na koji se odnosi.
+done() - funkcija koja govori Vue kad se animacija zavrsila. Ako se koristi CSS, onda Vue zna prema CSS-u kad zavrsit.
+
+methods: {
+beforeEnter(el), enter(el, done)... enter i leave imaju done.
+
+Ako koristimo samo JS za tranziciju, onda je dobro staviti :css="false" atribut.
+: jer se radi o boolian vrijednosti, pa moramo propustiti na taj nacin, a ne string.
+Zato atribute bind.

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="exercise">
+      <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+      <p v-once>VueJS is pretty cool - {{ name }} ( {{age}} )</p>
+      <!-- 2) Output your age, multiplied by 3 -->
+      <p>Age x 3 = {{ multiAge() }} or {{ age * 3 }}</p>
+      <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+      <p v-once>Random number is: {{ randNumber() }}</p>
+      <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+      <div>
+        <img v-bind:src="image" style="width:100px;height:100px" />
+      </div>
+      <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+      <div>
+        <input v-on:input="changeName" type="text" v-model="name" />
+        <p>New name is: {{ name }}</p>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#exercise",
+        data: {
+          name: "Antonio",
+          age: "24",
+          image:
+            "https://i.pinimg.com/originals/72/ce/8f/72ce8f7c348e0774b7dbf1ce6eba39d5.jpg"
+        },
+        methods: {
+          multiAge: function() {
+            let newAge = this.age * 3;
+            return newAge;
+          },
+          randNumber: function() {
+            const number = Math.random();
+            return number;
+          },
+          changeName: function() {
+            this.name = event.target.value;
+            return this.name;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

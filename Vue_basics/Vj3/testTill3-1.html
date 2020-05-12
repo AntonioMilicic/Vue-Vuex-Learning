@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <button v-on:click="counter++" type="button">Click me++!</button>
+      <button v-on:click="counter--" type="button">Click me--!</button>
+      <button v-on:click="secondCounter++" type="button">SecondCounter!</button>
+      <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+      <p>Result: {{ result() }} | {{ output }}</p>
+    </div>
+  </body>
+</html>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      counter: 0,
+      secondCounter: 0,
+    },
+    computed: {
+      output: function () {
+        console.log("Computed");
+        return this.counter > 5 ? "Greater 5" : "Smaller than 5";
+      },
+    },
+    watch: {
+      counter: function (value) {
+        let vm = this; // Jer se koristi callback pa trebamo this postavit
+        setTimeout(function () {
+          vm.counter = 0;
+        }, 2000);
+      },
+    },
+    methods: {
+      result: function () {
+        console.log("Method");
+        return this.counter > 5 ? "Greater 5" : "Smaller than 5";
+      },
+    },
+  });
+</script>
